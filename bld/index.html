@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Limb Randomizer</title>
+    <style>
+        body, html {
+            height: 100%;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+    
+        body {
+            font-family: sans-serif;
+        }
+
+        /* Darkmode */
+        @media (prefers-color-scheme: dark) {
+            body {
+            background-color: #000000;
+            color: #ffffff;
+            }
+        }
+
+        /* Lightmode */
+        @media (prefers-color-scheme: light) {
+            body {
+            background-color: #ffffff;
+            color: #000000;
+            }
+
+            #limbs svg {
+                fill: #000000;
+            }
+        }
+
+        #limb {
+            font-size: 2rem;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 3rem;
+            padding: 1rem;
+            vertical-align: middle;
+        }
+
+        #limbs {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            flex-flow: column;
+        }
+
+        #limbs div {
+            width: 100%;
+            justify-content: center;
+            display: inline-flex;
+            margin-bottom: 5rem;
+        }
+
+        #limbs svg {
+            height: auto;
+            width: 30%;
+            margin: 0;
+            padding: 0;
+        }
+
+        fieldset {
+            margin: 1rem;
+            font-size: 3rem;
+            display: table;
+        }
+
+        fieldset p {
+            display: table-row;
+        }
+
+        fieldset label, fieldset input {
+            display: table-cell;
+            vertical-align: middle;
+            padding: 1rem 0;
+        }
+
+        fieldset input[type="checkbox"] {
+            width: 3rem;
+            height: 3rem;
+            margin: 0 2rem;
+            padding: 0;
+            vertical-align: middle;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            font-size: 4rem;
+        }
+
+        body>p {
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            font-size: 3rem;
+        }
+
+        #mainpagelink {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+        }
+        #mainpagelink a {
+            text-decoration: dotted;
+            color: palevioletred;
+            font-size: 4rem;
+        }
+    </style>
+  </head>
+
+  <body>
+    <h1>Boulder Limb Randomizer</h1>
+
+    <p>Tap the body for a random limb</p>
+
+    <fieldset>
+        <p>
+            <label for="hardmode">Hard Mode</label>
+            <input type="checkbox" id="hardmode" name="hardmode" />
+        </p>
+
+        <p>
+            <label for="handsonly">Only Hands ( ͡° ͜ʖ ͡°)</label>
+            <input type="checkbox" id="handsonly" name="handsonly" />
+        </p>
+
+        <p>
+            <label for="feetonly">Only Feet</label>
+            <input type="checkbox" id="feetonly" name="feetonly" />
+        </p>
+    </fieldset>
+
+    <p id="limb"></p>
+
+    <div id="limbs" onclick="randomize()">
+        <div>
+            <svg id="hand-left" fill="#FFFFFF" height="20%" width="20%" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 317.124 317.124" xml:space="preserve" transform="matrix(-1, 0, 0, 1, 0, 0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M309.008,195.1l-6.288,0.022c2.298-1.434,3.829-2.981,3.819-5.888c-0.015-4.467-3.649-7.076-8.116-7.061l-52.313,1.727 c-1.173,0.039-2.241-0.671-2.659-1.768c-0.418-1.097-0.093-2.337,0.808-3.089l9.368-7.814c3.497-2.781,4.077-7.869,1.295-11.365 c-2.78-3.496-7.869-4.076-11.365-1.295c0,0-22.083,17.638-29.492,23.456c-12.207,9.586-27.613,14.084-43.061,12.582 c-34.146-3.32-70.284-5.36-84.886-1.204L84.217,67.425c-0.055-3.674-3.049-6.623-6.724-6.623H6.725 c-2.025,0-3.941,0.912-5.219,2.483c-1.277,1.571-1.778,3.634-1.364,5.616L32.09,221.905c4.645,22.247,25.724,37.128,48.235,34.004 c35.289-4.897,75.304-13.261,108.772-20.277c10.381-2.176,20.913-2.503,31.416-1.025c31.895,4.488,54.572,3.715,59.033,3.7 c4.467-0.015,8.076-1.649,8.06-6.117c-0.01-2.907-1.558-4.444-3.866-5.861l13.422-0.046c4.467-0.016,8.076-3.65,8.061-8.117 c-0.01-2.908-1.558-5.444-3.866-6.862l7.707-0.027c4.467-0.016,8.076-3.65,8.06-8.117 C317.109,198.693,313.475,195.084,309.008,195.1z M12.735,83.977c0-4.142,3.358-7.5,7.5-7.5s7.5,3.358,7.5,7.5 c0,4.142-3.358,7.5-7.5,7.5S12.735,88.119,12.735,83.977z M34.93,159.844c-0.466,0.087-0.93,0.129-1.388,0.129 c-3.539,0-6.69-2.517-7.363-6.122l-9.188-49.121c-0.762-4.071,1.922-7.989,5.993-8.751c4.063-0.759,7.99,1.922,8.751,5.993 l9.188,49.121C41.685,155.165,39.001,159.083,34.93,159.844z"></path> </g></svg>
+            <svg id="body" fill="#FFFFFF" height="20%" width="20%" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 295.5 295.5" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M197.092,108.021c5.962,2.62,12.318,3.948,18.892,3.948c25.916,0,47.138-21.844,47.525-49.745 C263.647,27.914,235.749,0,201.515,0c-22.972,0-43.051,12.568-53.763,31.181C137.041,12.568,116.962,0,93.99,0 c-34.187,0-62,27.813-62,62c0,32.198,23.415,50,47,50c6.573,0,12.93-1.328,18.891-3.948c3.791-1.667,8.218,0.057,9.884,3.849 c1.667,3.792-0.057,8.217-3.849,9.884C96.041,125.245,87.654,127,78.99,127c-7.492,0-14.677-1.337-21.331-3.782 c16.78,49.557,17.167,103.544,0.514,153.838c-0.082,0.248-0.125,0.399-0.125,0.444c0,9.941,40.04,18,89.432,18 c49.392,0,89.432-8.059,89.432-18c0-0.026-0.026-0.118-0.077-0.272c-16.58-50.437-16.036-104.603,0.97-154.235 c-6.792,2.563-14.144,3.976-21.822,3.976c-8.664,0-17.05-1.755-24.927-5.216c-3.792-1.666-5.515-6.091-3.849-9.884 C188.875,108.077,193.299,106.354,197.092,108.021z M227.605,62c7.12,0,12.892,5.772,12.892,12.893s-5.772,12.892-12.892,12.892 c-7.12,0-12.893-5.772-12.893-12.892S220.485,62,227.605,62z M67.368,87.785c-7.12,0-12.893-5.772-12.893-12.892 S60.248,62,67.368,62c7.12,0,12.892,5.772,12.892,12.893S74.488,87.785,67.368,87.785z M89.759,25.12 c-0.26,0.017-15.7,1.137-23.871,12.42c-1.467,2.026-3.757,3.102-6.08,3.103c-1.525,0-3.063-0.464-4.393-1.427 c-3.355-2.429-4.105-7.118-1.676-10.473C66.205,11.528,88.016,10.19,88.939,10.143c4.124-0.255,7.666,2.959,7.883,7.096 C97.04,21.363,93.88,24.886,89.759,25.12z M108.033,26.49c-4.142,0-7.5-3.358-7.5-7.5c0-4.142,3.358-7.5,7.5-7.5 c4.142,0,7.5,3.358,7.5,7.5C115.533,23.132,112.175,26.49,108.033,26.49z M147.753,253.833c-3.409,0-6.173-3.88-6.173-8.667 c0-4.786,2.764-8.667,6.173-8.667c3.409,0,6.173,3.88,6.173,8.667C153.925,249.953,151.162,253.833,147.753,253.833z"></path> </g></svg>
+            <svg id="hand-right" fill="#FFFFFF" height="20%" width="20%" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 317.124 317.124" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M309.008,195.1l-6.288,0.022c2.298-1.434,3.829-2.981,3.819-5.888c-0.015-4.467-3.649-7.076-8.116-7.061l-52.313,1.727 c-1.173,0.039-2.241-0.671-2.659-1.768c-0.418-1.097-0.093-2.337,0.808-3.089l9.368-7.814c3.497-2.781,4.077-7.869,1.295-11.365 c-2.78-3.496-7.869-4.076-11.365-1.295c0,0-22.083,17.638-29.492,23.456c-12.207,9.586-27.613,14.084-43.061,12.582 c-34.146-3.32-70.284-5.36-84.886-1.204L84.217,67.425c-0.055-3.674-3.049-6.623-6.724-6.623H6.725 c-2.025,0-3.941,0.912-5.219,2.483c-1.277,1.571-1.778,3.634-1.364,5.616L32.09,221.905c4.645,22.247,25.724,37.128,48.235,34.004 c35.289-4.897,75.304-13.261,108.772-20.277c10.381-2.176,20.913-2.503,31.416-1.025c31.895,4.488,54.572,3.715,59.033,3.7 c4.467-0.015,8.076-1.649,8.06-6.117c-0.01-2.907-1.558-4.444-3.866-5.861l13.422-0.046c4.467-0.016,8.076-3.65,8.061-8.117 c-0.01-2.908-1.558-5.444-3.866-6.862l7.707-0.027c4.467-0.016,8.076-3.65,8.06-8.117 C317.109,198.693,313.475,195.084,309.008,195.1z M12.735,83.977c0-4.142,3.358-7.5,7.5-7.5s7.5,3.358,7.5,7.5 c0,4.142-3.358,7.5-7.5,7.5S12.735,88.119,12.735,83.977z M34.93,159.844c-0.466,0.087-0.93,0.129-1.388,0.129 c-3.539,0-6.69-2.517-7.363-6.122l-9.188-49.121c-0.762-4.071,1.922-7.989,5.993-8.751c4.063-0.759,7.99,1.922,8.751,5.993 l9.188,49.121C41.685,155.165,39.001,159.083,34.93,159.844z"></path> </g></svg>
+        </div>
+        <div>
+            <svg id="foot-left" fill="#FFFFFF" height="20%" width="20%" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 315.002 315.002" xml:space="preserve" transform="matrix(-1, 0, 0, 1, 0, 0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M299.115,297.458c-0.83-2.881-3.076-5.135-5.953-5.98c-9.027-2.65-44.838-3.671-73.178-37.38 c-4.771-5.675-9.856-8.838-10.419-26.985c0-15.381,0-103.76,0-156.378c0-21.488-15.324-39.809-36.46-43.676L26.013,0.145 c-2.589-0.474-5.255,0.227-7.277,1.912c-2.022,1.685-3.191,4.182-3.191,6.814v78.32c0,2.453,1.015,4.796,2.805,6.473 c1.79,1.677,4.194,2.539,6.641,2.38l123.205-7.993c-3.869,31.995,0.306,64.527,12.251,94.613l5.786,14.572 c7.168,19.344,8.036,40.46,2.479,60.327c0,0-2.193,9.03-3.329,11.903c-4.318,10.923-4.529,23,2.317,32.543 c6.846,9.543,18.479,14.423,30.085,12.622l6.343-0.985c6.774-1.052,13.635-1.442,20.485-1.167l51.845,2.086 c7.904,0.318,15.533-2.933,20.777-8.855l0.021-0.023C299.243,303.444,299.945,300.339,299.115,297.458z M101.656,32.759 c-0.587,3.692-3.774,6.324-7.398,6.324c-0.391,0-0.787-0.03-1.186-0.094l-52.055-8.271c-4.091-0.65-6.88-4.493-6.23-8.584 c0.65-4.091,4.489-6.885,8.584-6.23l52.055,8.271C99.517,24.825,102.306,28.668,101.656,32.759z M114.272,41.252 c-4.142,0-7.5-3.358-7.5-7.5c0-4.142,3.358-7.5,7.5-7.5c4.142,0,7.5,3.358,7.5,7.5C121.772,37.894,118.414,41.252,114.272,41.252z"></path> </g></svg>
+            <svg id="foot-right" fill="#FFFFFF" height="20%" width="20%" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 315.002 315.002" xml:space="preserve" ><path d="M299.115,297.458c-0.83-2.881-3.076-5.135-5.953-5.98c-9.027-2.65-44.838-3.671-73.178-37.38 c-4.771-5.675-9.856-8.838-10.419-26.985c0-15.381,0-103.76,0-156.378c0-21.488-15.324-39.809-36.46-43.676L26.013,0.145 c-2.589-0.474-5.255,0.227-7.277,1.912c-2.022,1.685-3.191,4.182-3.191,6.814v78.32c0,2.453,1.015,4.796,2.805,6.473 c1.79,1.677,4.194,2.539,6.641,2.38l123.205-7.993c-3.869,31.995,0.306,64.527,12.251,94.613l5.786,14.572 c7.168,19.344,8.036,40.46,2.479,60.327c0,0-2.193,9.03-3.329,11.903c-4.318,10.923-4.529,23,2.317,32.543 c6.846,9.543,18.479,14.423,30.085,12.622l6.343-0.985c6.774-1.052,13.635-1.442,20.485-1.167l51.845,2.086 c7.904,0.318,15.533-2.933,20.777-8.855l0.021-0.023C299.243,303.444,299.945,300.339,299.115,297.458z M101.656,32.759 c-0.587,3.692-3.774,6.324-7.398,6.324c-0.391,0-0.787-0.03-1.186-0.094l-52.055-8.271c-4.091-0.65-6.88-4.493-6.23-8.584 c0.65-4.091,4.489-6.885,8.584-6.23l52.055,8.271C99.517,24.825,102.306,28.668,101.656,32.759z M114.272,41.252 c-4.142,0-7.5-3.358-7.5-7.5c0-4.142,3.358-7.5,7.5-7.5c4.142,0,7.5,3.358,7.5,7.5C121.772,37.894,118.414,41.252,114.272,41.252z" /></svg>
+        </div>
+    </div>
+
+    <p id="mainpagelink"><a href="/">Back to the main page ↗</a></p>
+
+    <script>
+      const limb_el = document.getElementById("limb");
+      const hardmode_el = document.getElementById("hardmode");
+      const handsonly_el = document.getElementById("handsonly");
+      const feetonly_el = document.getElementById("feetonly");
+
+      const LEFT_HAND = 0;
+      const RIGHT_HAND = 1;
+      const LEFT_FOOT = 2;
+      const RIGHT_FOOT = 3;
+
+      const LIMBS_TEXT = ["Left Hand", "Right Hand", "Left Foot", "Right Foot"];
+      const LIMBS_IDS = ["hand-left", "hand-right", "foot-left", "foot-right"];
+
+      const limbs = [LEFT_HAND, RIGHT_HAND, LEFT_FOOT, RIGHT_FOOT];
+
+      const hardmode_limbs = [
+        [LEFT_HAND, RIGHT_HAND],
+        [LEFT_HAND, LEFT_FOOT],
+        [LEFT_HAND, RIGHT_FOOT],
+        [RIGHT_HAND, RIGHT_FOOT],
+        [RIGHT_HAND, LEFT_FOOT],
+        [LEFT_FOOT, RIGHT_FOOT],
+      ];
+
+      const handsonly_limbs = [LEFT_HAND, RIGHT_HAND];
+
+      const feetonly_limbs = [LEFT_FOOT, RIGHT_FOOT];
+
+      function random_limb(limbs) {
+        const random_index = Math.floor(Math.random() * limbs.length);
+        const random_limb = limbs[random_index];
+
+        if (Array.isArray(random_limb)) {
+          return {
+            text: random_limb.map((limb) => LIMBS_TEXT[limb]).join(" and "), 
+            ids: random_limb.map((limb) => LIMBS_IDS[limb])
+          };
+        }
+
+        return {
+            text: LIMBS_TEXT[random_limb],
+            ids: LIMBS_IDS[random_limb]
+        };
+      }
+
+      function randomize() {
+        const hardmode_enabled = hardmode_el.checked;
+        const handsonly_enabled = handsonly_el.checked;
+        const feetonly_enabled = feetonly_el.checked;
+
+        // Reset colouring
+        for (let i = 0; i < limbs.length; i++) {
+          document.getElementById(LIMBS_IDS[i]).style.fill = "";
+        }
+
+        let selection = null;
+        if (hardmode_enabled) {
+          const limbs = random_limb(hardmode_limbs);
+          limb_el.innerHTML = limbs.text;
+          limbs.ids.forEach((id) => document.getElementById(id).style.fill = "#FF0000");
+        } else {
+            let limb;
+            if (handsonly_enabled === true) {
+                limb = random_limb(handsonly_limbs);
+            } else if (feetonly_enabled === true) {
+                limb = random_limb(feetonly_limbs);
+            } else {
+                limb = random_limb(limbs);
+            }
+            limb_el.innerHTML = limb.text;
+            document.getElementById(limb.ids).style.fill = "#FF0000";
+        }
+      }
+
+        hardmode_el.addEventListener("change", (e) => {
+            if (e.target.checked) {
+            handsonly_el.checked = false;
+            handsonly_el.disabled = true;
+            feetonly_el.checked = false;
+            feetonly_el.disabled = true;
+            } else {
+            handsonly_el.disabled = false;
+            feetonly_el.disabled = false;
+            }
+        });
+
+        handsonly_el.addEventListener("change", (e) => {
+            if (e.target.checked) {
+            hardmode_el.checked = false;
+            hardmode_el.disabled = true;
+            feetonly_el.checked = false;
+            feetonly_el.disabled = true;
+            } else {
+            hardmode_el.disabled = false;
+            feetonly_el.disabled = false;
+            }
+        });
+
+        feetonly_el.addEventListener("change", (e) => {
+            if (e.target.checked) {
+            hardmode_el.checked = false;
+            hardmode_el.disabled = true;
+            handsonly_el.checked = false;
+            handsonly_el.disabled = true;
+            } else {
+            hardmode_el.disabled = false;
+            handsonly_el.disabled = false;
+            }
+        });
+
+    </script>
+  </body>
+</html>
