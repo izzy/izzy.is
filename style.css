@@ -12,7 +12,6 @@ html {
     font-weight: 400;
     font-style: normal;
     font-size: 3rem;
-    min-height: 100%;
 }
 
 body {
@@ -21,6 +20,7 @@ body {
     background-size: cover;
     background-blend-mode: darken;
     margin: 0;
+    min-height: 100%;
 }
 
 h1 {
